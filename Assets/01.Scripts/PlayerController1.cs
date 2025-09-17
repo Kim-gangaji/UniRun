@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController1 : MonoBehaviour
 {
     public AudioClip deathClip; // 사망 시 재생할 오디오 클립
-    public float jumpForce = 700f; // 점프 힘
+    public float jumpForce = 400f; // 점프 힘
 
     private int jumpCount = 0; // 누적 점프 횟수
     private bool isGrounded= false; // 바닥에 닿았는지 나타냄
@@ -87,10 +87,19 @@ public class PlayerController1 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 바닥에 닿았음을 감지하는 처리
+        // 어떤 콜라이더와 닿았으며, 충돌 표면이 위쪽을 보고 있으면
+        if (collision.contacts[0].normal.y > 0.7f)
+        {
+            // isGrounded를 true로 변경하고, 누적 점프 횟수를 0으로 리셋
+            isGrounded = true;
+            jumpCount = 0;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         // 바닥에서 벗어났음을 감지하는 처리
+        // 어떤 콜라이더에서 떼어진 경우 isGrounded를 false로 변경
+        isGrounded = false;
     }
 }
