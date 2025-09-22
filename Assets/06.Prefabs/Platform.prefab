@@ -599,4 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470677bed90287444bb74fa7e0b7ea8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles: []
+  obstacles:
+  - {fileID: 4008333426434960326}
+  - {fileID: 5918408741806144540}
+  - {fileID: 3402664504149659135}
